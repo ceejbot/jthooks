@@ -29,7 +29,9 @@ Jthooks.prototype.authenticate  = function()
 Jthooks.prototype.setWebhook = function(opts, callback)
 {
     var self = this;
-    self.exists(opts, function(err, hook)
+    var func = (opts.id ? 'hook' : 'exists');
+
+    self[func](opts, function(err, hook)
     {
         if (err) return callback(err);
         if (hook)
@@ -42,9 +44,10 @@ Jthooks.prototype.update = function(hook, opts, callback)
 {
     var newHook =
     {
-        repo: hook.repo,
-        user: hook.user,
-        name: hook.name,
+        id:     hook.id,
+        repo:   opts.repo,
+        user:   opts.user,
+        name:   hook.name,
         active: ('active' in opts ? opts.active : true),
         events: ('events' in opts ? opts.events : [ 'push' ]),
         config:
@@ -58,7 +61,7 @@ Jthooks.prototype.update = function(hook, opts, callback)
     this.authenticate();
     this.client.repos.updateHook(newHook, function(err, result)
     {
-        callback(err, result);
+        callback(err, false, result);
     });
 };
 
@@ -82,9 +85,7 @@ Jthooks.prototype.create  = function(opts, callback)
     this.authenticate();
     this.client.repos.createHook(hookOpts, function(err, result)
     {
-        if (err) return callback(err);
-        console.log(result);
-        callback();
+        callback(err, true, result);
     });
 };
 
@@ -98,13 +99,19 @@ Jthooks.prototype.exists = function(opts, callback)
         for (var i = 0; i < hooks.length; i++)
         {
             var hook = hooks[i];
-            if (hook.url === opts.url)
+            if (hook.config.url === opts.url)
                 return callback(null, hook);
             // that check might need to be looser
         }
 
         callback(null, false); // not found
     });
+};
+
+Jthooks.prototype.hook = function(opts, callback)
+{
+    this.authenticate();
+    this.client.repos.getHook(opts, callback);
 };
 
 Jthooks.prototype.hooks = function(opts, callback)
