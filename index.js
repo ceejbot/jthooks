@@ -28,12 +28,6 @@ Jthooks.prototype.authenticate  = function()
 
 Jthooks.prototype.setWebhook = function(opts, callback)
 {
-    assert(opts && _.isObject(opts), 'you must pass an options object to create()');
-    assert(opts.url && _.isString(opts.url), 'you must pass a valid url in the `url` option field');
-    assert(opts.secret && _.isString(opts.secret), 'you must pass a shared secret in the `secret` option field');
-    assert(opts.user && _.isString(opts.user), 'you must pass the repo owner in `user`');
-    assert(opts.repo && _.isString(opts.repo), 'you must pass the name of the repo in `repo`');
-
     var self = this;
     self.exists(opts, function(err, hook)
     {
@@ -70,12 +64,6 @@ Jthooks.prototype.update = function(hook, opts, callback)
 
 Jthooks.prototype.create  = function(opts, callback)
 {
-    assert(opts && _.isObject(opts), 'you must pass an options object to create()');
-    assert(opts.url && _.isString(opts.url), 'you must pass a valid url in the `url` option field');
-    assert(opts.secret && _.isString(opts.secret), 'you must pass a shared secret in the `secret` option field');
-    assert(opts.user && _.isString(opts.user), 'you must pass the repo owner in `user`');
-    assert(opts.repo && _.isString(opts.repo), 'you must pass the name of the repo in `repo`');
-
     var hookOpts =
     {
         repo: opts.repo,
@@ -102,11 +90,6 @@ Jthooks.prototype.create  = function(opts, callback)
 
 Jthooks.prototype.exists = function(opts, callback)
 {
-    assert(opts && _.isObject(opts), 'you must pass an options object to create()');
-    assert(opts.user && _.isString(opts.user), 'you must pass the repo owner in `user`');
-    assert(opts.repo && _.isString(opts.repo), 'you must pass the name of the repo in `repo`');
-    assert(opts.url && _.isString(opts.url), 'you must pass a valid url in the `url` option field');
-
     var self = this;
 
     self.hooks(opts, function(err, hooks)
@@ -126,10 +109,6 @@ Jthooks.prototype.exists = function(opts, callback)
 
 Jthooks.prototype.hooks = function(opts, callback)
 {
-    assert(opts && _.isObject(opts), 'you must pass an options object to create()');
-    assert(opts.user && _.isString(opts.user), 'you must pass the repo owner in `user`');
-    assert(opts.repo && _.isString(opts.repo), 'you must pass the name of the repo in `repo`');
-
     this.authenticate();
     this.client.repos.getHooks(opts, callback);
 };
