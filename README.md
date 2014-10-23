@@ -9,7 +9,7 @@ Create a github webhook from the command line. Pronounced "ji-thooks", as one wo
 First, create a Github oauth token that has permission to read & write webhooks. Full admin permission is not required. Keep a record of the token somewhere secure.
 
 ```shell
-jthooks -r foo/bar - https://example.com/hook -s sooper-sekrit -a github-auth-token
+jthooks -r foo/bar -h https://example.com/hook -s sooper-sekrit -a github-auth-token
 
 Options:
   -r, --repo    repo to add the hook to; in `owner/repo` format    [required]

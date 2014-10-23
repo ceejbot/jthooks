@@ -18,7 +18,7 @@ var argv    = require('yargs')
     .alias('u', 'url')
     .describe('u', 'full URL of github API to use (optional)')
     .describe('id', 'id of existing hook to update (optional)')
-    .usage('jthooks -r foo/bar -u https://example.com/hook -s sooper-sekrit -a auth-token')
+    .usage('jthooks -r foo/bar -h https://example.com/hook -s sooper-sekrit -a auth-token')
     .help('help', 'show this help')
     .argv;
 
