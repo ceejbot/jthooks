@@ -25,6 +25,12 @@ If you want to update an existing webhook, run the script with `--id`. Otherwise
 
 Set the `--url` option if you're not running against github.com but instead wish to change a repo on your Github Enterprise installation.
 
+## TODO
+
+Delete a hook.
+
+More than merely cursory tests.
+
 ## License
 
 ISC; see included LICENSE file.
