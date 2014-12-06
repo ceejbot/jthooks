@@ -6,7 +6,8 @@ var
     describe = lab.describe,
     it       = lab.it,
     demand   = require('must'),
-    Jthooks = require('../index')
+    sinon    = require('sinon'),
+    Jthooks  = require('../index')
     ;
 
 describe('jthooks', function()
@@ -41,6 +42,16 @@ describe('jthooks', function()
         var j = new Jthooks(goodOpts);
         j.must.be.instanceof(Jthooks);
         j.options.must.eql(goodOpts);
+        done();
+    });
+
+    it('authenticate() calls authenticate on the client', function(done)
+    {
+        var j = new Jthooks(goodOpts);
+        j.client.authenticate = sinon.spy();
+        j.authenticate();
+        j.client.authenticate.called.must.be.true();
+        j.client.authenticate.calledWith(goodOpts.auth).must.be.true();
         done();
     });
 });

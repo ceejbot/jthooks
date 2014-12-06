@@ -22,7 +22,7 @@
     "url": "https://github.com/ceejbot/jthooks.git"
   },
   "scripts": {
-    "test": "lab -v test/"
+    "test": "lab -v -c test/"
   },
   "dependencies": {
     "chalk": "~0.5.1",
@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "lab": "~5.0.1",
-    "must": "~0.12.0"
+    "must": "~0.12.0",
+    "sinon": "~1.12.1"
   }
 }
