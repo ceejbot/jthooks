@@ -12,7 +12,7 @@
   "dependencies": {
     "chalk": "~1.1.1",
     "github": "~0.2.4",
-    "lodash": "~4.0.0",
+    "lodash": "~4.0.1",
     "yargs": "~3.31.0"
   },
   "devDependencies": {
