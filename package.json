@@ -35,7 +35,7 @@
     "url": "https://github.com/ceejbot/jthooks.git"
   },
   "scripts": {
-    "lint": "eslint index.js test/",
+    "lint": "eslint *.js test/",
     "test": "nyc mocha -t 5000 --check-leaks --ui exports -R spec test/test-*.js",
     "travis": "nyc mocha -R spec -t 5000 test/test-*.js"
   }
