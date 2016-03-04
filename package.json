@@ -19,7 +19,7 @@
     "eslint": "~2.2.0",
     "mocha": "~2.4.5",
     "must": "~0.13.1",
-    "nyc": "~5.6.0",
+    "nyc": "~6.0.0",
     "sinon": "~1.17.3"
   },
   "homepage": "https://github.com/ceejbot/jthooks",
