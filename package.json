@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "chalk": "~1.1.1",
-    "github": "~0.2.4",
+    "github": "~1.1.0",
     "lodash.isobject": "~3.0.2",
     "yargs": "~4.7.1"
   },
