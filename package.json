@@ -16,7 +16,7 @@
     "yargs": "~5.0.0"
   },
   "devDependencies": {
-    "eslint": "~2.11.1",
+    "eslint": "~2.13.1",
     "mocha": "~3.0.2",
     "must": "~0.13.1",
     "nyc": "~8.3.0",
