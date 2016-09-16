@@ -1,7 +1,7 @@
 {
   "name": "jthooks",
   "description": "create a github webhook from the command-line",
-  "version": "0.1.4",
+  "version": "1.0.0",
   "author": "C J Silverio <ceejceej@gmail.com>",
   "bin": {
     "jthooks": "hook-cli.js"
