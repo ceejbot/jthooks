@@ -13,7 +13,7 @@
     "chalk": "~1.1.1",
     "github": "~1.1.0",
     "lodash.isobject": "~3.0.2",
-    "yargs": "~4.7.1"
+    "yargs": "~5.0.0"
   },
   "devDependencies": {
     "eslint": "~2.11.1",
