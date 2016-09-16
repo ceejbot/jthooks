@@ -39,7 +39,27 @@ Jthooks.prototype.setWebhook = function(opts, callback)
 	});
 };
 
-Jthooks.prototype.update = function(hook, opts, callback)
+Jthooks.prototype.removeWebhook = function(opts, callback)
+{
+	var self = this;
+
+	if (opts.id)
+		return self.remove(opts, callback);
+
+	self.exists(opts, function(err, hook)
+	{
+		if (err) return callback(err);
+		if (!hook) return callback();
+		var opts = {
+			id: hook.id,
+			repo: opts.repo,
+			user: opts.user
+		};
+		self.remove(opts, callback);
+	});
+};
+
+Jthooks.prototype.update = function update(hook, opts, callback)
 {
 	var newHook = {
 		id:     hook.id,
@@ -56,13 +76,13 @@ Jthooks.prototype.update = function(hook, opts, callback)
 	};
 
 	this.authenticate();
-	this.client.repos.updateHook(newHook, function(err, result)
+	this.client.repos.editHook(newHook, function(err, result)
 	{
 		callback(err, false, result);
 	});
 };
 
-Jthooks.prototype.create  = function(opts, callback)
+Jthooks.prototype.create  = function create(opts, callback)
 {
 	var hookOpts = {
 		repo: opts.repo,
@@ -84,7 +104,7 @@ Jthooks.prototype.create  = function(opts, callback)
 	});
 };
 
-Jthooks.prototype.exists = function(opts, callback)
+Jthooks.prototype.exists = function exists(opts, callback)
 {
 	var self = this;
 
@@ -103,14 +123,30 @@ Jthooks.prototype.exists = function(opts, callback)
 	});
 };
 
-Jthooks.prototype.hook = function(opts, callback)
+Jthooks.prototype.hook = function hook(opts, callback)
 {
 	this.authenticate();
 	this.client.repos.getHook(opts, callback);
 };
 
-Jthooks.prototype.hooks = function(opts, callback)
+Jthooks.prototype.hooks = function hooks(opts, callback)
 {
 	this.authenticate();
 	this.client.repos.getHooks(opts, callback);
+};
+
+Jthooks.prototype.remove = function remove(opts, callback)
+{
+	this.authenticate();
+	var hook = {
+		id:     opts.id,
+		repo:   opts.repo,
+		user:   opts.user,
+	};
+
+	this.authenticate();
+	this.client.repos.deleteHook(hook, function(err, result)
+	{
+		callback(err, { id: opts.id });
+	});
 };

@@ -36,7 +36,7 @@
   },
   "scripts": {
     "lint": "eslint *.js test/",
-    "test": "nyc mocha -t 5000 --check-leaks --ui exports -R spec test/test-*.js",
+    "test": "nyc mocha -t 5000 --check-leaks --ui exports -R spec test",
     "travis": "nyc mocha -R spec -t 5000 test/test-*.js"
   }
 }
