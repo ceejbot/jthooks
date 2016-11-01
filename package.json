@@ -11,16 +11,17 @@
   },
   "dependencies": {
     "chalk": "~1.1.1",
-    "github": "~3.1.0",
+    "github": "~6.0.1",
     "lodash.isobject": "~3.0.2",
     "yargs": "~6.3.0"
   },
   "devDependencies": {
-    "eslint": "~3.5.0",
-    "mocha": "~3.0.2",
+    "eslint-config-ceejbot": "~1.0.3",
+    "mocha": "~3.1.2",
     "must": "~0.13.1",
-    "nyc": "~8.3.0",
-    "sinon": "~1.17.3"
+    "nyc": "~8.3.2",
+    "sinon": "~1.17.6",
+    "xo": "~0.17.0"
   },
   "homepage": "https://github.com/ceejbot/jthooks",
   "keywords": [
@@ -35,8 +36,11 @@
     "url": "https://github.com/ceejbot/jthooks.git"
   },
   "scripts": {
-    "lint": "eslint *.js test/",
+    "lint": "xo",
     "test": "nyc mocha -t 5000 --check-leaks --ui exports -R spec test",
     "travis": "nyc mocha -R spec -t 5000 test/test-*.js"
+  },
+  "xo": {
+    "extends": "eslint-config-ceejbot"
   }
 }

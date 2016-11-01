@@ -24,11 +24,12 @@ var chalk   = require('chalk'),
 			global: true,
 		})
 		.describe('id', 'id of existing hook to update (optional)')
-		.usage('jthooks [add|remove] user/repo https://example.com/hook shared-sekrit')
+		.usage('jthooks [add|remove] owner/repo https://example.com/hook shared-sekrit')
 		.example('jthooks add foo/bar https://example.com/hook sooper-sekrit -a auth-token', 'add a webhook')
 		.example('jthooks remove foo/bar https://example.com/hook', 'remove a hook by url')
 		.example('jthooks remove foo/bar 123456', 'remove a hook by id')
 		.help('help', 'show this help');
+
 var argv = yargs.argv;
 
 function noop() { }
@@ -75,7 +76,7 @@ function addHook(argv)
 
 	var pieces = argv.repo.split('/');
 	var hookOpts = {
-		user:   pieces[0],
+		owner:   pieces[0],
 		repo:   pieces[1],
 		secret: argv.secret,
 		url:    argv.hook,
@@ -104,7 +105,7 @@ function removeHook(argv)
 
 	var pieces = argv.repo.split('/');
 	var opts = {
-		user:   pieces[0],
+		owner:   pieces[0],
 		repo:   pieces[1],
 	};
 

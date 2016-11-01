@@ -53,7 +53,7 @@ Jthooks.prototype.removeWebhook = function(opts, callback)
 		var opts = {
 			id: hook.id,
 			repo: opts.repo,
-			user: opts.user
+			owner: opts.owner
 		};
 		self.remove(opts, callback);
 	});
@@ -64,10 +64,10 @@ Jthooks.prototype.update = function update(hook, opts, callback)
 	var newHook = {
 		id:     hook.id,
 		repo:   opts.repo,
-		user:   opts.user,
+		owner:   opts.owner,
 		name:   hook.name,
 		active: ('active' in opts ? opts.active : true),
-		events: ('events' in opts ? opts.events : [ 'push' ]),
+		events: ('events' in opts ? opts.events : ['push']),
 		config: {
 			content_type: 'json',
 			secret: opts.secret,
@@ -86,10 +86,10 @@ Jthooks.prototype.create  = function create(opts, callback)
 {
 	var hookOpts = {
 		repo: opts.repo,
-		user: opts.user,
+		owner: opts.owner,
 		name:   'web',
 		active: true,
-		events: [ 'push' ],
+		events: ['push'],
 		config: {
 			content_type: 'json',
 			secret: opts.secret,
@@ -141,7 +141,7 @@ Jthooks.prototype.remove = function remove(opts, callback)
 	var hook = {
 		id:     opts.id,
 		repo:   opts.repo,
-		user:   opts.user,
+		owner:   opts.owner,
 	};
 
 	this.authenticate();
