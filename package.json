@@ -21,7 +21,7 @@
     "must": "~0.13.1",
     "nyc": "~8.3.2",
     "sinon": "~1.17.6",
-    "xo": "~0.17.0"
+    "xo": "~0.19.0"
   },
   "homepage": "https://github.com/ceejbot/jthooks",
   "keywords": [
